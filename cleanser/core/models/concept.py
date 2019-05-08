@@ -5,8 +5,9 @@ import uuid
 from .utils import TimeMixin
 from ..managers.base import DataQuerySet
 
+
 class ConceptType(models.Model):
-  id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+  # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
   name = models.CharField(max_length=4)
 
   validate_schema = models.BooleanField(default=True, blank=True)
@@ -23,11 +24,11 @@ class ConceptType(models.Model):
 
 
 class Concept(TimeMixin, models.Model):
-  id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+  # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
   name = models.CharField(max_length=64)
-  synonyms = pg_fields.ArrayField(models.CharField(max_length=64))
+  synonyms = pg_fields.ArrayField(models.CharField(max_length=64), null=True, blank=True)
 
-  description = models.TextField()
+  description = models.TextField(blank=True, default='')
   # thumbnail = models.ImageField()
 
   props = pg_fields.JSONField(blank=True, null=True, default=dict)

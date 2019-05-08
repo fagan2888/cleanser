@@ -13,8 +13,8 @@ from .model import Model
 
 from .image import Image
 
-from .embedding import Embedding
-from .dataset import Dataset
+from .embedding import ImageEmbedding
+from .dataset import Dataset, ImageDataset
 from .annotation import Annotation
 
 

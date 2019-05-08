@@ -6,7 +6,7 @@ from .utils import TimeMixin
 
 
 class Document(TimeMixin, models.Model):
-  id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+  # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
   # type = models.CharField(choices=[])
   data = fields.JSONField()
 

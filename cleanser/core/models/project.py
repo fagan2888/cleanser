@@ -5,7 +5,7 @@ from .utils import TimeMixin, OwnedMixin
 
 
 class Project(OwnedMixin, TimeMixin, models.Model):
-  id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+  # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
   slug = models.SlugField(
     max_length=32,
     unique=True,

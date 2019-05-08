@@ -57,7 +57,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     - restricts username to 3-32 characters, numbers, . or _
   - replaces first_name and last_name fields with name
   """
-  id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+  # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
   # replace first and last name with just name for full name
   name = models.CharField(_('full name'), max_length=128, blank=True)

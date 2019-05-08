@@ -7,7 +7,9 @@ from .utils import TimeMixin
 
 
 class Model(TimeMixin, models.Model):
-  id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+  # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+  name = models.CharField(blank=True, default='', max_length=64)
+
   schema = fields.JSONField(
     null=True,
     blank=True,
