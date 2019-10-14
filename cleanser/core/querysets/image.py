@@ -6,6 +6,16 @@ import glob
 
 
 class ImageQuerySet(QuerySet):
+  def available_locally(self):
+    return self.filter(file__isnull=False)
+
+
+  def with_embedding(self, model):
+    pass
+
+  def without_embedding(self, model):
+    pass
+
   def from_paths(self, paths: Union[str, List[str]], save=True):
     if isinstance(paths, str):
       paths = glob.iglob(paths, recursive=True)

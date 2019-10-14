@@ -33,3 +33,7 @@ from .core.models import (
 
 # def set_default_user(user: User):
 #   pass
+
+import logging
+
+log = logging.getLogger('cleanser')

@@ -25,6 +25,8 @@ class DatasetImage(models.Model):
   dataset = models.ForeignKey(Dataset, on_delete=models.CASCADE)
   image = models.ForeignKey(Image, on_delete=models.CASCADE)
 
+  # split = models.CharField(choices=[])
+
 
 
 

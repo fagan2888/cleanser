@@ -7,17 +7,8 @@ from ..querysets.image import ImageQuerySet
 
 
 class Image(TimeMixin, models.Model):
-  # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-
   # TODO: validate that the file is a valid image
   file = models.ImageField(upload_to='images/', null=True, blank=True)
-
-  source_id = models.CharField(max_length=64, blank=True, null=True)
-  source_url = models.URLField(
-    help_text='url that this image was downloaded from',
-    blank=True,
-    null=True
-  )
 
   # width = models.PositiveSmallIntegerField(null=True, blank=True)
   # height = models.PositiveSmallIntegerField(null=True, blank=True)
@@ -30,6 +21,14 @@ class Image(TimeMixin, models.Model):
 
   class Meta:
     db_table = 'image'
+
+  @property
+  def path(self):
+    return self.file.path
+
+  @property
+  def is_available(self):
+    return self.file
 
   @lazy
   def pillow(self):

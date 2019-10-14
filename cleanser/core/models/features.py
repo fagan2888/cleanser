@@ -2,11 +2,6 @@ from django.db import models
 
 
 
-class Featuizer(models.Model):
-  pass
-
-
-
 class Features(models.Model):
   pass
 
