@@ -25,5 +25,5 @@ requests-toolbelt==0.8.0
 six==1.12.0
 sqlparse==0.2.4
 twine==1.11.0
-urllib3==1.24.1
+urllib3==1.24.2
 yann==0.0.22
