@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres import fields as pg_fields
 import uuid
 
 from .utils import TimeMixin
@@ -8,7 +9,12 @@ from ..querysets.image import ImageQuerySet
 
 class Image(TimeMixin, models.Model):
   # TODO: validate that the file is a valid image
+  id = models.UUIDField(primary_key=True, default=uuid.uuid4, db_index=True)
   file = models.ImageField(upload_to='images/', null=True, blank=True)
+
+  # url
+
+  time_taken = models.DateTimeField(null=True, blank=True)
 
   # width = models.PositiveSmallIntegerField(null=True, blank=True)
   # height = models.PositiveSmallIntegerField(null=True, blank=True)
@@ -16,11 +22,20 @@ class Image(TimeMixin, models.Model):
   # derived_from = models.ForeignKey('Image', blank=True, null=True,
   #                                  on_delete=models.SET_NULL)
 
+  meta = pg_fields.JSONField(
+    default=dict,
+    blank=True,
+  )
+
 
   objects = ImageQuerySet.as_manager()
 
   class Meta:
     db_table = 'image'
+
+
+  def annotate(self, concept=None, ):
+    raise NotImplementedError()
 
   @property
   def path(self):

@@ -10,6 +10,10 @@ class ImageSerializer(serializers.ModelSerializer):
     fields = (
       'id',
       'file',
-      'source_url',
-      'source_id'
+      'time_created',
+      'time_modified',
+      'time_taken',
+      'meta',
+      # 'source_url',
+      # 'source_id'
     )

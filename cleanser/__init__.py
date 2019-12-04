@@ -1,5 +1,8 @@
 
 def configure():
+  """
+  run django configuration so we can use the module without the standard settings file
+  """
   from django.conf import settings
   if not settings.configured:
     from . import settings as cleanser_settings
@@ -16,17 +19,26 @@ configure()
 
 from .core.models import (
   Concept,
-  Document,
-  Object,
-  DataImport,
-  Dataset,
-  ImageDataset,
-  Annotation,
+  # Document,
+  # Object,
+  # DataImport,
+  # Dataset,
+  # ImageDataset,
+  # Annotation,
   Model,
   ImageEmbedding,
   # User,
+  # Project,
+  Image,
+  ImageAnnotation,
+  Experiment,
+  Model,
+  Run,
+  Event,
+  Checkpoint,
   Project,
-  Image
+  Account,
+  Dataset
 )
 
 

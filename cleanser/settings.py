@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     #core
     'cleanser.core',
     'cleanser.admins',
+    'cleanser.api',
     # 'api'
     # 'concept',
     # 'image',
@@ -148,14 +149,32 @@ AUTH_USER_MODEL = 'core.User'
 
 
 REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        ),
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
-    )
-}
-
+        ),
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    'TEST_REQUEST_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.MultiPartRenderer',
+        'rest_framework.renderers.TemplateHTMLRenderer',
+        ),
+    }
 
 
 
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+
+# need to use `pip install https://github.com/michalwols/django/archive/master.zip` to support this flag
+ALLOW_ASYNC_UNSAFE = True
+
+
+
+from pathlib import Path
+home = str(Path.home())
+CLEANSER_ROOT = Path.home() / 'cleanser'

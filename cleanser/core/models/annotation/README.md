@@ -1,10 +1,4 @@
-from django.db import models
-from django.contrib.postgres import fields as pg_fields
-
-from .concept import Concept
-from .image import Image
-from .utils import TimeMixin
-#
+```python
 
 
 
@@ -40,6 +34,7 @@ ImageAnnotation
     polygon: [],
     mask: [],
     caption: '',
+    text: 'fsdafsdfas'
   }
   
   time_created: '',
@@ -89,43 +84,62 @@ TextAnnotation
 
 """
 
-class Annotation(TimeMixin, models.Model):
-  concept = models.ForeignKey(
-    Concept,
-    on_delete=models.CASCADE,
-    null=True,
-    blank=True)
 
-  data = pg_fields.JSONField()
-  confidence = models.FloatField(default=None, blank=True, null=True)
-  source = models.CharField(max_length=128)
-
-  class Meta:
-    abstract = True
+# class DocumentAnnotation(Annotation):
+#   document = models.ForeignKey(
+#     Document, on_delete=models.CASCADE, related_name='annotations'
+#   )
+#
+#
+# class VideoAnnotation(Annotation):
+#   pass
 
 
-class ImageAnnotation(Annotation):
-  image = models.ForeignKey(Image, on_delete=models.CASCADE)
+# class BoundingBox(ImageAnnotation):
+#
+#   class Meta:
+#     proxy = True
+#
+#
+# class Keypoints(ImageAnnotation):
+#
+#   class Meta:
+#     proxy = True
+#
+#
+# class Polygon(ImageAnnotation):
+#
+#   class Meta:
+#     proxy = True
+#
+#
+# class SegmentationMask(ImageAnnotation):
+#
+#   class Meta:
+#     proxy = True
+#
+#
+# class TextAnnotation(ImageAnnotation):
+#
+#   class Meta:
+#     proxy = True
 
+# image = Image('/fafsdf/afsdfsa/saf.jpeg')
+#
+# outputs = model(image.pillow)
+#
+# me = ''
+#
+# image.annotations.filter(type='text', concept='pizza')
+# image.annotations.add(
+#   text='nutrition facts', concept='nutrition_label_text', user=me
+# )
+#
+# image.annotate(text='pizza', bounding_box=[[123, 31]])
+# image.suggest(text='pzza')
+#
+# image.suggestions.filter(type='text')
+#
+# image.model_outputs.filter()
 
-
-
-class BoundingBox(ImageAnnotation):
-  class Meta:
-    proxy = True
-
-
-class Keypoints(ImageAnnotation):
-  class Meta:
-    proxy = True
-
-
-class Polygon(ImageAnnotation):
-  class Meta:
-    proxy = True
-
-
-class SegmentationMask(ImageAnnotation):
-  class Meta:
-    proxy = True
-
+```
